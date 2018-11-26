@@ -171,7 +171,6 @@ public class wclient {
             if(port)
             // write data
             System.out.write(data.bytes(), 0, data.size() - wumppkt.DHEADERSIZE);
-
             // send ack
             ack = new wumppkt.ACK(expected_block);
             ackDG.setData(ack.write());
