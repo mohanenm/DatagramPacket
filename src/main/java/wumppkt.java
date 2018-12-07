@@ -1,24 +1,5 @@
-// The following implements the packet formats for BUMP and HUMP.
-// Each individual packet type derives from class BASE, containing
-// protocol and opcode fields only; we don't really use this inheritance
-// hierarchy though.
 
-// packets can be constructed with the applicable constructors;
-// each ctor requires parameters for the necessary fields.
-// when possible, there is a "convenience" ctor setting proto = BUMPPROTO.
 
-// The "raw" packet format, as sent and received via DatagramSocket,
-// is byte[].  Packets (at least those that one might *receive*)
-// can be constructed from a byte[]. For DATA packets, we also need
-// to specify the length of the packet, not necessarily the same as
-// the length of the byte[] buffer.
-
-// All packet classes also have a write() member function that
-// writes out the packet fields into a byte[], for sending.
-
-//import java.lang.*;     //pld
-//import java.net.*;      //pld
-//import java.lang.System.*;
 import java.io.*;
 
 public class wumppkt {
@@ -335,10 +316,6 @@ public class wumppkt {
         public ERROR(short proto, short errcode) {
             super(proto, ERRORop);
             _errcode = errcode;
-        }
-
-        public ERROR(short errcode) {
-            this(THEPROTO, errcode);
         }
 
         public short errcode() {return _errcode;}
